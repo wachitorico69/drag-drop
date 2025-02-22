@@ -1,25 +1,38 @@
-var cont1 = document.getElementById("cont1");
-var cont2 = document.getElementById("cont2");
-var objeto = document.getElementById("objeto");
+const target = document.getElementById("cont1");
+const target2 = document.getElementById("cont2");
 
-objeto.addEventListener("ondragstart",drag);
+document.getElementById("cont1").addEventListener("drop", drop);
+document.getElementById("cont2").addEventListener("drop", drop);
 
-cont1.addEventListener("ondrop", drop);
-cont1.addEventListener("ondragover", allowDrop);
+document.getElementById("cont1").addEventListener("dragover", allowDrop);
+document.getElementById("cont2").addEventListener("dragover", allowDrop);
 
-cont2.addEventListener("ondrop", drop);
-cont2.addEventListener("ondragover", allowDrop);
+document.addEventListener("dragenter", function(event) {
+    if (event.target.className == "droptarget") {
+      document.getElementById("info").innerHTML = "LeBron entró a la zona";
+    }
+});
 
-function allowDrop(ev) {
-    ev.preventDefault();
+document.addEventListener("dragleave", function(event) {
+    if (event.target.className == "droptarget") {
+      document.getElementById("info").innerHTML = "LeBron dejó la zona";
+    }
+});
+
+
+document.getElementById("objeto").addEventListener("dragstart", drag);
+
+function allowDrop(event) {
+    event.preventDefault();
 }
   
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
+    document.getElementById("info").innerHTML = "LeBron se está moviendo";
 }
   
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
 }  

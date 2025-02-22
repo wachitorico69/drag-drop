@@ -33,7 +33,7 @@ header {
     margin-bottom: 3em;
 }
 
-.contenedores {
+#cont1, #cont2 {
     display: flex;
     justify-content: center;
     width: 450px;

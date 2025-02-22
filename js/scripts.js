@@ -7,6 +7,8 @@ document.getElementById("cont2").addEventListener("drop", drop);
 document.getElementById("cont1").addEventListener("dragover", allowDrop);
 document.getElementById("cont2").addEventListener("dragover", allowDrop);
 
+document.getElementById("objeto").addEventListener("dragstart", drag);
+
 document.addEventListener("dragenter", function(event) {
     if (event.target.className == "droptarget") {
       document.getElementById("info").innerHTML = "LeBron entró a la zona";
@@ -19,8 +21,9 @@ document.addEventListener("dragleave", function(event) {
     }
 });
 
-
-document.getElementById("objeto").addEventListener("dragstart", drag);
+document.addEventListener("dragend", function(event) {
+    document.getElementById("info").innerHTML = "LeBron dejo de moverse";
+  });
 
 function allowDrop(event) {
     event.preventDefault();

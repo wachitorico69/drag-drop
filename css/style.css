@@ -46,6 +46,7 @@ header {
 p {
     text-align: center;
     border-bottom: .5em solid #552583;
+    font-size: large;
 }
 
 img {

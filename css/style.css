@@ -47,3 +47,7 @@ p {
     text-align: center;
     border-bottom: .5em solid #552583;
 }
+
+img {
+    cursor: pointer;
+}
